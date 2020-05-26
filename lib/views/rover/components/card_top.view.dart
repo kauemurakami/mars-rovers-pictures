@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mars_rovers_images/controllers/home.controller.dart';
 import 'package:mars_rovers_images/controllers/rover.controller.dart';
 
 class CardTopWidget extends StatelessWidget {
@@ -8,9 +9,12 @@ class CardTopWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<RoverController>(
       init: RoverController(),
-      global: false,
       builder: (_){
-        return Text(_.rover.photos[0].rover.name);
+        return Column(
+          children: <Widget>[
+            Text(Get.find<HomeController>().selectedRover.value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          ],
+        );
       },
     );
   }

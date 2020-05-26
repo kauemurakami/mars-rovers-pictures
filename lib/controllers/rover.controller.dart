@@ -5,7 +5,11 @@ import 'home.controller.dart';
 
 class RoverController extends RxController {
 
-  var rover = Get.find<HomeController>();
-  
+  var rover = Rover().obs;
+
+  getRover() async{
+     rover = await Get.find<HomeController>().photos[0].rover;
+  }
+
 }
 
