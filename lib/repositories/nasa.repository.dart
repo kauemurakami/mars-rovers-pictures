@@ -14,7 +14,7 @@ class NasaRepository{
     if(response.statusCode == 200){
       Map<String, dynamic> dadosJson = json.decode(response.body);
       List<Data> photos = dadosJson["photos"].map<Data>((map){
-        print(rover);
+        //print(rover);
         return Data.fromJson(map);
       }).toList();
       return photos;

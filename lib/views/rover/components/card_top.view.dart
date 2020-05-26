@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mars_rovers_images/controllers/home.controller.dart';
-import 'package:mars_rovers_images/controllers/rover.controller.dart';
 
 class CardTopWidget extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
-    return GetX<RoverController>(
-      init: RoverController(),
-      builder: (_){
-        return Column(
+    return GetX<HomeController>(builder: (_) {
+      return Container(
+        child: Column(
           children: <Widget>[
-            Text(Get.find<HomeController>().selectedRover.value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Text(_.selectedRover.value.toUpperCase(),
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white)),
+            Container(
+              width: MediaQuery.of(context).size.width / 2,
+              height: MediaQuery.of(context).size.height / 3.9,
+              child: Image.asset('assets/images/${_.selectedRover.value}.jpg', fit: BoxFit.fill),
+              ),
           ],
-        );
-      },
-    );
+        ),
+      );
+    });
   }
 }

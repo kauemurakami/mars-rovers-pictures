@@ -9,9 +9,7 @@ class RoverView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GetX<HomeController>(
-        builder: (_) {
-        return ListView(
+      body:  ListView(
           padding: EdgeInsets.only(top: 1),
           children: <Widget>[
             SlimyCard(
@@ -25,8 +23,7 @@ class RoverView extends StatelessWidget {
               slimeEnabled: true,
             ),
           ],
-        );
-      }),
+        ),
     );
   }
 }

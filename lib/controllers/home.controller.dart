@@ -15,13 +15,9 @@ class HomeController extends RxController{
 
   getPhotos() async{
     photos = await nasaRepository.getPhotos(rover: selectedRover.value);
-    //print(photos);
+    print(photos);
     return this._photos;
   }
-  @override
-  void onInit() {
-    super.onInit();
-    getPhotos();
-  }
+
 
 }

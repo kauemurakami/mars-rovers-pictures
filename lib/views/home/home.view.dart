@@ -8,66 +8,64 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController controller = Get.put(HomeController());
-    return 
-         DefaultTabController(
-            initialIndex: 1,
-            length: 3,
-            child: Scaffold(
-              appBar: AppBar(
-                backgroundColor: appThemeData.accentColor,
-                elevation: 0,
-                bottom: TabBar(
-                    onTap: (value) {
-                      switch (value) {
-                        case 0:
-                          controller.selectedRover = 'curiosity';
-                          controller.getPhotos();
-                          break;
-                        case 1:
-                          controller.selectedRover = 'spirit';
-                          controller.getPhotos();
-                          break;
-                        case 2:
-                          controller.selectedRover = 'opportunity';
-                          controller.getPhotos();
-                          break;
-                      }
-                      print(controller.selectedRover.value);
-                    },
-                    labelColor: appThemeData.accentColor,
-                    unselectedLabelColor: Colors.white,
-                    indicatorSize: TabBarIndicatorSize.label,
-                    indicator: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            topRight: Radius.circular(10)),
-                        color: Colors.white),
-                    tabs: [
-                      Tab(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text("CURIOSITY"),
-                        ),
-                      ),
-                      Tab(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text("SPIRIT"),
-                        ),
-                      ),
-                      Tab(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text("OPPORTUNITY"),
-                        ),
-                      ),
-                    ]),
-              ),
-              body: TabBarView(children: [
-                RoverView(),
-                RoverView(),
-                RoverView(),
-              ]),
-            ));
+    return DefaultTabController(
+        initialIndex: 1,
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: appThemeData.accentColor,
+            elevation: 0,
+            bottom: TabBar(
+                onTap: (value) {
+                  switch (value) {
+                    case 0:
+                      controller.selectedRover = 'curiosity';
+                      break;
+                    case 1:
+                      controller.selectedRover = 'spirit';
+                      break;
+                    case 2:
+                      controller.selectedRover = 'opportunity';
+                      break;
+                  }
+                  controller.getPhotos();
+
+                  //print(controller.selectedRover.value);
+                },
+                labelColor: appThemeData.accentColor,
+                unselectedLabelColor: Colors.white,
+                indicatorSize: TabBarIndicatorSize.label,
+                indicator: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10)),
+                    color: Colors.white),
+                tabs: [
+                  Tab(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text("CURIOSITY"),
+                    ),
+                  ),
+                  Tab(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text("SPIRIT"),
+                    ),
+                  ),
+                  Tab(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text("OPPORTUNITY"),
+                    ),
+                  ),
+                ]),
+          ),
+          body: TabBarView(children: [
+            RoverView(),
+            RoverView(),
+            RoverView(),
+          ]),
+        ));
   }
 }
