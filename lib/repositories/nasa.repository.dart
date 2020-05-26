@@ -9,15 +9,13 @@ const X = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1
 class NasaRepository{
   NasaRepository();
 
-  Future<List<Data>> getPhotos({String rover = 'curiosity', int page = 1, int sol = 1000}) async {
-    http.Response response = await http.get('https://api.nasa.gov/mars-photos/api/v1/rovers/$rover/photos?sol=$sol&page=$page&api_key=$API_KEY');
+  Future<List<Data>> getPhotos({String rover, int page = 1, int sol = 1000}) async {
+    http.Response response = await http.get('https://api.nasa.gov/mars-photos/api/v1/rovers/$rover/photos?sol=$sol&page=$page&api_key='+API_KEY);
     if(response.statusCode == 200){
       Map<String, dynamic> dadosJson = json.decode(response.body);
       List<Data> photos = dadosJson["photos"].map<Data>((map){
         return Data.fromJson(map);
       }).toList();
-      print('api');
-      print(photos);
       return photos;
     }else { print('sem retorno');}
   }

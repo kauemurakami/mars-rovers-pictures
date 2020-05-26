@@ -4,7 +4,7 @@ import 'package:mars_rovers_images/controllers/home.controller.dart';
 import 'package:mars_rovers_images/theme/appTheme.dart';
 import 'package:mars_rovers_images/views/rover/rover.view.dart';
 
-class HomeView extends StatelessWidget{
+class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController controller = Get.put(HomeController());
@@ -18,18 +18,20 @@ class HomeView extends StatelessWidget{
                 elevation: 0,
                 bottom: TabBar(
                     onTap: (value) {
-                      switch(value){
+                      switch (value) {
                         case 0:
                           controller.selectedRover = 'curiosity';
-                        break;
+                          controller.getPhotos();
+                          break;
                         case 1:
-                        controller.selectedRover = 'spirit';
-                        break;
+                          controller.selectedRover = 'spirit';
+                          controller.getPhotos();
+                          break;
                         case 2:
-                        controller.selectedRover = 'opportunity';
-                        break;
+                          controller.selectedRover = 'opportunity';
+                          controller.getPhotos();
+                          break;
                       }
-
                     },
                     labelColor: appThemeData.accentColor,
                     unselectedLabelColor: Colors.white,
@@ -60,8 +62,7 @@ class HomeView extends StatelessWidget{
                       ),
                     ]),
               ),
-              body: TabBarView(
-                children: [
+              body: TabBarView(children: [
                 RoverView(),
                 RoverView(),
                 RoverView(),
