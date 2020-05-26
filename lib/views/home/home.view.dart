@@ -8,8 +8,8 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeController controller = Get.put(HomeController());
-    return GetMaterialApp(
-        home: DefaultTabController(
+    return 
+         DefaultTabController(
             initialIndex: 1,
             length: 3,
             child: Scaffold(
@@ -32,6 +32,7 @@ class HomeView extends StatelessWidget {
                           controller.getPhotos();
                           break;
                       }
+                      print(controller.selectedRover.value);
                     },
                     labelColor: appThemeData.accentColor,
                     unselectedLabelColor: Colors.white,
@@ -67,6 +68,6 @@ class HomeView extends StatelessWidget {
                 RoverView(),
                 RoverView(),
               ]),
-            )));
+            ));
   }
 }

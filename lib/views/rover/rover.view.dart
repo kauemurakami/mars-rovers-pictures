@@ -9,7 +9,9 @@ class RoverView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GetX<HomeController>(builder: (_) {
+      body: GetX<HomeController>(
+        global: true,
+        builder: (_) {
         return ListView(
           padding: EdgeInsets.only(top: 1),
           children: <Widget>[
