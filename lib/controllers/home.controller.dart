@@ -5,17 +5,21 @@ import 'package:mars_rovers_images/repositories/nasa.repository.dart';
 class HomeController extends RxController{
   final NasaRepository nasaRepository = NasaRepository();
 
+  final _a = 'a'.obs;
+  get a => this._a.value;
+  set a(a) => this._a.value = a;
+
   final _selectedRover = 'spirit'.obs;
   get selectedRover => this._selectedRover;
   set selectedRover(rover) => this._selectedRover.value = rover;
 
-  List<Data> _photos;
-  get photos => this._photos;
-  set photos(value) => this._photos = value;
+  final _photos = List<Data>().obs;
+  get photos => this._photos.value;
+  set photos(value) => this._photos.value = value;
 
   getPhotos() async{
     photos = await nasaRepository.getPhotos(rover: selectedRover.value);
-    print(photos);
+    //print(photos);
     return this._photos;
   }
 
